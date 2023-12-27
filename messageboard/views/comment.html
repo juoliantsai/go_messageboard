@@ -1,0 +1,32 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>message board</title>
+    </head>
+    <body>
+        <div class="header">
+            <p>#{{.MessageInfo.Id}}·{{.MessageInfo.Nickname}}</p>
+            <p>{{.MessageInfo.AddTime}}</p>
+            <p>{{.MessageInfo.Message}}</p>
+            <p>{{.MessageInfo.CommentNum}}</p>
+        </div>
+        <div class="container">
+            <form action="" method="post">
+                <p><input name="nickname" type="text" value=""></p>
+                <p><textarea name="comment" id="news"></textarea></p>
+                <p><input class="submit" type="submit" value="submit"></p>
+            </form>
+            <div class="container-btm">
+                <ul>
+                {{range .CommentList}}
+                    <li>
+                        <p>#{{.Id}}·{{.Nickname}}</p>
+                        <p>{{.AddTime}}</p>
+                        <p>{{.Comment}}</p>
+                    </li>
+                {{end}}
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>
