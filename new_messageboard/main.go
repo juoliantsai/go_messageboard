@@ -11,9 +11,9 @@ import (
 func main() {
     r := mux.NewRouter()
 
-    r.HandleFunc("/message", controllers.GetMessage).Methods("GET")
-    r.HandleFunc("/message/{id}", controllers.GetMessageById).Methods("GET")
-    r.HandleFunc("/message", controllers.CreateMessage).Methods("POST")
+    r.HandleFunc("/movies", controllers.GetMessage).Methods("GET")
+    r.HandleFunc("/movie/{id}", controllers.GetMessageById).Methods("GET")
+    r.HandleFunc("/movie", controllers.CreateMessage).Methods("POST")
 
     fmt.Println("starting server at port:8080")
     log.Fatal(http.ListenAndServe(":8080", r))
