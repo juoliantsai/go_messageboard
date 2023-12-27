@@ -47,3 +47,13 @@ func (m *Message) CreateMessage() int64 {
 
     return id
 }
+
+func (m *Message) UpdateMessage() int64 {
+    _, err := Db.Exec("UPDATE message SET message = ?, nickname = ? WHERE id = ?", m.Message, m.Nickname, m.Id)
+
+    if err != nil {
+        fmt.Println(err)
+    }
+
+    return 0
+}

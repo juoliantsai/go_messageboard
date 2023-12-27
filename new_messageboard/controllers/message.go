@@ -37,8 +37,24 @@ func CreateMessage(w http.ResponseWriter, r *http.Request) {
     _ = json.NewDecoder(r.Body).Decode(&m)
 
     m.AddTime = time.Now().Format("2006-01-02 15:04:05")
-    if m.Message != "" && m.AddTime != "" {
+    if m.Message != "" {
         m.Id = m.CreateMessage()
+    }
+
+    json.NewEncoder(w).Encode(m)
+}
+
+func UpdateMessage(w http.ResponseWriter, r *http.Request) {
+    w.Header().Set("Content-Type", "application/json")
+    params := mux.Vars(r)
+    m := new(models.Message)
+    id, _ := strconv.Atoi(params["id"])
+    m.Id = int64(id)
+
+    _ = json.NewDecoder(r.Body).Decode(&m)
+
+    if m.Message != "" {
+        _ = m.UpdateMessage()
     }
 
     json.NewEncoder(w).Encode(m)
