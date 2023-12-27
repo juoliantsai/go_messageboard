@@ -1,7 +1,6 @@
 package controllers
 
 import (
-    "fmt"
     "time"
     "strconv"
     "encoding/json"
@@ -33,12 +32,11 @@ func GetMessageById(w http.ResponseWriter, r *http.Request) {
 
 func CreateMessage(w http.ResponseWriter, r *http.Request) {
     w.Header().Set("Content-Type", "application/json")
-    params := mux.Vars(r)
-    fmt.Println(params)
+
     m := new(models.Message)
-    m.Nickname = params["nickname"]
-    m.Message  = params["message"]
-    m.AddTime  = time.Now().Format("2006-01-02 15:04:05")
+    _ = json.NewDecoder(r.Body).Decode(&m)
+
+    m.AddTime = time.Now().Format("2006-01-02 15:04:05")
     if m.Message != "" && m.AddTime != "" {
         m.Id = m.CreateMessage()
     }
