@@ -15,6 +15,7 @@ func main() {
     r.HandleFunc("/movie/{id}", controllers.GetMessageById).Methods("GET")
     r.HandleFunc("/movie", controllers.CreateMessage).Methods("POST")
     r.HandleFunc("/movie/{id}", controllers.UpdateMessage).Methods("PUT")
+    r.HandleFunc("/movie/{id}", controllers.DeleteMessage).Methods("Delete")
 
     fmt.Println("starting server at port:8080")
     log.Fatal(http.ListenAndServe(":8080", r))
