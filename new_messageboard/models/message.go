@@ -57,3 +57,13 @@ func (m *Message) UpdateMessage() int64 {
 
     return 0
 }
+
+func (m *Message) DeleteMessage() string {
+    _, err := Db.Exec("DELETE FROM message WHERE id = ?", m.Id)
+
+    if err != nil {
+        return "fail"
+    }
+
+    return "success"
+}
