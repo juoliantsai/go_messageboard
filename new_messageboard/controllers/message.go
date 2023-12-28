@@ -59,3 +59,16 @@ func UpdateMessage(w http.ResponseWriter, r *http.Request) {
 
     json.NewEncoder(w).Encode(m)
 }
+
+func DeleteMessage(w http.ResponseWriter, r *http.Request) {
+    w.Header().Set("Content-Type", "application/json")
+    params := mux.Vars(r)
+    id, _ := strconv.Atoi(params["id"])
+
+    m := new(models.Message)
+    m.Id = int64(id)
+
+    res := m.DeleteMessage()
+
+    json.NewEncoder(w).Encode(res)
+}
