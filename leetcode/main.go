@@ -28,8 +28,11 @@ func main() {
     /*nums,target := []int{1,3,5,6},5
     res:=searchInsert(nums,target)*/
 
-    s := "   fly me   to   the moon  "
-    res:=lengthOfLastWord(s)
+    /*s := "   fly me   to   the moon  "
+    res:=lengthOfLastWord(s)*/
+
+    digits := []int{4,3,2,1}
+    res:=plusOne(digits)
 
     fmt.Println(res)
 }
@@ -183,4 +186,24 @@ func lengthOfLastWord(s string) int {
     len:=len(words[l-1])
 
     return len
+}
+// Plus One
+func plusOne(digits []int) []int {
+    l := len(digits)
+    n := digits[l-1]+1
+    str := strconv.Itoa(n)
+
+    r := []rune(str)
+    for i,j:=0,len(r);i<j;i=i+1 {
+        s := string(r[i])
+        a,_ := strconv.Atoi(s)
+
+        if l+i > len(digits) {
+            digits = append(digits, a)
+        } else {
+            digits[l-1] = a
+        }
+    }
+
+    return digits
 }
