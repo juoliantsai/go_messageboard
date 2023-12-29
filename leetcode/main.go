@@ -93,9 +93,9 @@ func removeDuplicates(nums []int) int {
             if check {
                 res = append(res,v1)
             }
-	} else {
+        } else {
             res = append(res,v1)
-	}
+        }
     }
 
     return len(res)
