@@ -22,8 +22,11 @@ func main() {
     /*nums,val := []int{0,1,2,2,3,0,4,2},2
     res := removeElement(nums,val)*/
 
-    haystack,needle := "leetcode","leeto"
-    res:=strStr(haystack,needle)
+    /*haystack,needle := "leetcode","leeto"
+    res:=strStr(haystack,needle)*/
+
+    nums,target := []int{1,3,5,6},5
+    res:=searchInsert(nums,target)
 
     fmt.Println(res)
 }
@@ -141,4 +144,15 @@ func strStr(haystack string, needle string) int {
     }
 
     return res
+}
+// Search Insert Position
+func searchInsert(nums []int, target int) int {
+    i,j:=0,len(nums)-1
+    for i=0;i<j;i=i+1 {
+        if nums[i] == target || nums[i] > target {
+            return i
+        }
+    }
+
+    return i+1
 }
