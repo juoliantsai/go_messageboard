@@ -16,8 +16,11 @@ func main() {
     /*s := "MCMXCIV"
     res := romanToInt(s)*/
 
-    nums := []int{0,0,1,1,1,2,2,3,3,4}
-    res := removeDuplicates(nums)
+    /*nums := []int{0,0,1,1,1,2,2,3,3,4}
+    res := removeDuplicates(nums)*/
+
+    nums,val := []int{0,1,2,2,3,0,4,2},2
+    res := removeElement(nums,val)
 
     fmt.Println(res)
 }
@@ -98,5 +101,15 @@ func removeDuplicates(nums []int) int {
         }
     }
 
+    return len(res)
+}
+// Remove Element
+func removeElement(nums []int, val int) int {
+    res := make([]int, 0)
+    for _,v := range nums {
+        if v != val {
+            res = append(res, v)
+        }
+    }
     return len(res)
 }
