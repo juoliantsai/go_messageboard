@@ -81,18 +81,22 @@ func romanToInt(s string) int {
 }
 // Remove Duplicates from Sorted Array
 func removeDuplicates(nums []int) int {
-    res := make([]int)
-    rr:=0
-    for i,v1 := range nums {
-        if len(res) == 0 {
-            res = append(res,v1)
-	} else {
-            for j,v2 := range res {
+    res := make([]int,0)
+    for _,v1 := range nums {
+        check := true
+        if len(res) > 0 {
+            for _,v2 := range res {
                 if v1 == v2 {
-                } else {
+                    check = false
                 }
-	    }
+            }
+            if check {
+                res = append(res,v1)
+            }
+	} else {
+            res = append(res,v1)
 	}
     }
+
     return len(res)
 }
