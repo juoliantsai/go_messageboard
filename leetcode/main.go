@@ -149,7 +149,7 @@ func strStr(haystack string, needle string) int {
 func searchInsert(nums []int, target int) int {
     i,j:=0,len(nums)-1
     for i=0;i<j;i=i+1 {
-        if nums[i] == target || nums[i] > target {
+        if nums[i] >= target {
             return i
         }
     }
