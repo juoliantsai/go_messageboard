@@ -25,8 +25,11 @@ func main() {
     /*haystack,needle := "leetcode","leeto"
     res:=strStr(haystack,needle)*/
 
-    nums,target := []int{1,3,5,6},5
-    res:=searchInsert(nums,target)
+    /*nums,target := []int{1,3,5,6},5
+    res:=searchInsert(nums,target)*/
+
+    s := "   fly me   to   the moon  "
+    res:=lengthOfLastWord(s)
 
     fmt.Println(res)
 }
@@ -155,4 +158,29 @@ func searchInsert(nums []int, target int) int {
     }
 
     return i+1
+}
+// Length of Last Word
+func lengthOfLastWord(s string) int {
+    str := []rune(s)
+    word := make([]rune,0)
+    words := make([]string,0)
+    space := []rune(" ")
+
+    for i,j:=0,len(str); i<j; i=i+1 {
+        if str[i] != space[0] {
+            word = append(word, str[i])
+        }
+        if str[i] == space[0] || i+1 == j {
+            w := string(word)
+            if len(w) > 0 {
+                words = append(words, w)
+                word = make([]rune,0)
+            }
+        }
+    }
+
+    l:=len(words)
+    len:=len(words[l-1])
+
+    return len
 }
