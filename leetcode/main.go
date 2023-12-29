@@ -134,6 +134,7 @@ func strStr(haystack string, needle string) int {
                     break loop1
                 }
             } else {
+		res = -1
                 break loop2
             }
         }
