@@ -19,8 +19,11 @@ func main() {
     /*nums := []int{0,0,1,1,1,2,2,3,3,4}
     res := removeDuplicates(nums)*/
 
-    nums,val := []int{0,1,2,2,3,0,4,2},2
-    res := removeElement(nums,val)
+    /*nums,val := []int{0,1,2,2,3,0,4,2},2
+    res := removeElement(nums,val)*/
+
+    haystack,needle := "leetcode","leeto"
+    res:=strStr(haystack,needle)
 
     fmt.Println(res)
 }
@@ -112,4 +115,29 @@ func removeElement(nums []int, val int) int {
         }
     }
     return len(res)
+}
+// Find the Index of the First Occurrence in a String
+func strStr(haystack string, needle string) int {
+    s1 := []rune(haystack)
+    s2 := []rune(needle)
+    res:= -1
+    loop1:
+    for i,j := 0,len(s1)-1; i < j; i = i+1 {
+        loop2:
+        for k,l := 0,len(s2)-1; k < l; k = k+1 {
+            if s1[i] == s2[k] {
+                if res < 0 {
+                    res = i
+                }
+                i = i+1
+                if i > l {
+                    break loop1
+                }
+            } else {
+                break loop2
+            }
+        }
+    }
+
+    return res
 }
