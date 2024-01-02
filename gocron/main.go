@@ -1,19 +1,28 @@
 package main
 import (
 "gocron/controllers"
+"os"
 "fmt"
 "time"
 "github.com/go-co-op/gocron"
 )
 
 func main() {
+  args:=os.Args
+  one:=args[1]
   sch:=gocron.NewScheduler(time.UTC)
+  _,err:=sch.Every(1).Second().Do(func(param string){
+    fmt.Println(param)
+  },one)
+  sch.StartBlocking()
+  
+  /*sch:=gocron.NewScheduler(time.UTC)
   cronExp:="28 * * * *" // 分 時 日 月 星期
   _,err:=sch.Cron(cronExp).StartImmediately().Do(controllers.SayHello)
   if err!=nil{
     panic(err)
   }
-  sch.StartBlocking()
+  sch.StartBlocking()*/
 }
 func newJob(schChan chan *gocron.Scheduler) {
   sch:=gocron.NewScheduler(time.UTC)
