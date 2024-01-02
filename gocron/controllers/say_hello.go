@@ -2,8 +2,9 @@ package controllers
 
 import (
 "fmt"
+"time"
 )
 
-func SayHello(){
-  fmt.Println("yo")
+func SayHello(param string){
+  fmt.Println(param, time.Now())
 }
