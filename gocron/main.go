@@ -12,8 +12,8 @@ func main() {
   one:=args[1]
   
   sch:=gocron.NewScheduler(time.UTC)
-  cronExp:="28 * * * *" // 分 時 日 月 星期
-  _,err:=sch.Cron(cronExp).StartImmediately().Do(controllers.SayHello)
+  cronExp:="* * * * *" // 分 時 日 月 星期
+  _,err:=sch.Cron(cronExp).StartImmediately().Do(controllers.SayHello, one)
   if err!=nil{
     panic(err)
   }
