@@ -1,5 +1,6 @@
 package main
 import (
+"gocron/controllers"
 "fmt"
 "time"
 "github.com/go-co-op/gocron"
@@ -7,10 +8,8 @@ import (
 
 func main() {
   sch:=gocron.NewScheduler(time.UTC)
-  cronExp:="28 * * * *"
-  _,err:=sch.Cron(cronExp).StartImmediately().Do(func(){
-    fmt.Println("hello")
-  })
+  cronExp:="28 * * * *" // 分 時 日 月 星期
+  _,err:=sch.Cron(cronExp).StartImmediately().Do(controllers.SayHello)
   if err!=nil{
     panic(err)
   }
